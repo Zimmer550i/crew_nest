@@ -1,31 +1,35 @@
-import 'package:flutter/material.dart';
 import 'package:crew_nest/utils/app_colors.dart';
+import 'package:crew_nest/utils/app_texts.dart';
+import 'package:flutter/material.dart';
 
 class Logo extends StatelessWidget {
+  final double size;
   final bool showName;
-  const Logo({super.key, this.showName = false});
+  final bool isWhite;
+  const Logo({
+    super.key,
+    this.size = 80,
+    this.showName = false,
+    this.isWhite = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       spacing: 6,
       children: [
-        Image.asset("assets/images/logo.png", height: 50),
+        Image.asset(
+          "assets/images/logo${isWhite ? "_white" : ""}.png",
+          height: size,
+          width: size,
+        ),
         if (showName)
-          Image.asset(
-            "assets/images/name.png",
-            fit: BoxFit.cover,
-            height: 28,
-            width: 90,
-          ),
-        if (showName)
-          Container(width: 112, height: 0.5, color: AppColors.green.shade100),
-        if (showName)
-          Image.asset(
-            "assets/images/name_ar.png",
-            fit: BoxFit.cover,
-            height: 28,
-            width: 90,
+          Text(
+            "CrewNest",
+            style: AppTexts.dmdm.copyWith(
+              color: isWhite ? Colors.white : AppColors.blue,
+              fontSize: 28,
+            ),
           ),
       ],
     );

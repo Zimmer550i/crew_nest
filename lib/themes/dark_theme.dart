@@ -4,10 +4,10 @@ import 'package:crew_nest/utils/app_colors.dart';
 ThemeData dark() => ThemeData(
   fontFamily: "Lato",
   brightness: Brightness.dark,
-  scaffoldBackgroundColor: AppColors.gray.shade900,
+  scaffoldBackgroundColor: AppColors.error,
   colorScheme: ColorScheme.dark(
-    primary: AppColors.green,
-    secondary: AppColors.green.shade300,
-    surface: AppColors.gray.shade800,
+    primary: AppColors.blue,
+    secondary: AppColors.blue.shade300,
+    surface: AppColors.black.shade800,
   ),
 );

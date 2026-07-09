@@ -135,7 +135,7 @@ class AppTexts {
       fontSize: fontSize,
       height: lineHeight / fontSize,
       fontWeight: weight,
-      color: AppColors.gray.shade900,
+      color: AppColors.black.shade400,
     );
   }
 }

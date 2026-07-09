@@ -12,7 +12,7 @@ class ThemeController extends GetxController implements GetxService {
     _loadCurrentTheme();
   }
 
-  bool _darkTheme = true;
+  bool _darkTheme = false;
 
 
   bool get darkTheme => _darkTheme;

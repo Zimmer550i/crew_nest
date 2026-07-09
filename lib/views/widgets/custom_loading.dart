@@ -6,7 +6,7 @@ import 'package:crew_nest/utils/app_colors.dart';
 // ──────────────────────────────────────────────
 
 // Colors
-final _defaultLoaderColor = AppColors.green[50]!;
+final _defaultLoaderColor = AppColors.blue[50]!;
 
 // ──────────────────────────────────────────────
 

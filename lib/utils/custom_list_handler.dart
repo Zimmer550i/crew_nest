@@ -73,7 +73,7 @@ class CustomListHandler extends StatelessWidget {
           : RefreshIndicator(
               onRefresh: onRefresh ?? () async {},
               color: AppColors.black,
-              backgroundColor: AppColors.gray[25],
+              backgroundColor: AppColors.black[25],
               child: getChild() ?? getChildren(),
             ),
     );

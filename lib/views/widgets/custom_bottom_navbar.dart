@@ -8,20 +8,14 @@ import 'package:crew_nest/utils/custom_svg.dart';
 // ──────────────────────────────────────────────
 
 // Colors
-const _topBorderColor = Color(0xff333333);
-const _selectedColor = AppColors.green;
-final _unselectedColor = AppColors.green.shade100;
+const _selectedColor = AppColors.blue;
+final _unselectedColor = AppColors.black.shade300;
 
 // Sizing
 const _borderRadius = 16.0;
-const _verticalPadding = 10.0;
+const _verticalPadding = 12.0;
 const _iconSize = 24.0;
-const _labelSpacing = 5.0;
-
-// Shadow
-const _shadowOffset = Offset(0, 2);
-const _shadowBlur = 16.0;
-const _shadowAlpha = 27;
+const _labelSpacing = 4.0;
 
 // Typography
 final _labelStyle = AppTexts.tsmm;
@@ -38,26 +32,22 @@ class CustomBottomNavbar extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        border: Border(top: BorderSide(color: _topBorderColor)),
+        color: Colors.white,
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(_borderRadius),
         ),
-        boxShadow: [
-          BoxShadow(
-            offset: _shadowOffset,
-            blurRadius: _shadowBlur,
-            color: Colors.black.withAlpha(_shadowAlpha),
-          ),
-        ],
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: _verticalPadding),
-        child: Row(
-          children: [
-            // item("Home", AppIcons.home, 0),
-            // item("Pool", AppIcons.pool, 1),
-            // item("Settings", AppIcons.settings, 2),
-          ],
+        padding: const EdgeInsets.only(top: _verticalPadding),
+        child: SafeArea(
+          child: Row(
+            children: [
+              item("Home", "home", 0),
+              item("Bookings", "booking", 1),
+              item("Saved", "heart", 2),
+              item("Profile", "profile", 3),
+            ],
+          ),
         ),
       ),
     );
@@ -73,16 +63,17 @@ class CustomBottomNavbar extends StatelessWidget {
         },
         behavior: HitTestBehavior.translucent,
         child: Column(
+          mainAxisSize: .min,
           children: [
             CustomSvg(
-              asset: icon,
+              asset: "assets/icons/$icon${isSelected ? "_selected" : ""}.svg",
               size: _iconSize,
-              color: isSelected ? _selectedColor : _unselectedColor,
             ),
             const SizedBox(height: _labelSpacing),
             Text(
               name,
               style: _labelStyle.copyWith(
+                fontWeight: isSelected ? FontWeight.w500 : FontWeight.w400,
                 color: isSelected ? _selectedColor : _unselectedColor,
               ),
             ),

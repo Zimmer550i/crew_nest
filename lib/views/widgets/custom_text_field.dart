@@ -9,37 +9,37 @@ import 'package:crew_nest/utils/app_texts.dart';
 // ──────────────────────────────────────────────
 
 // Colors
-const _backgroundColor = AppColors.white;
-const _focusBorderColor = AppColors.green;
-const _defaultBorderColor = AppColors.gray;
-const _cursorColor = AppColors.green;
-const _errorColor = AppColors.red;
+const _backgroundColor = Colors.white;
+final _focusBorderColor = AppColors.blue[300]!;
+final _defaultBorderColor = AppColors.blue[100]!;
+final _cursorColor = AppColors.blue.shade300;
+const _errorColor = AppColors.error;
 
 // Border
-const _defaultBorderWidth = 1.0;
-const _focusBorderWidth = 1.5;
-const _defaultBorderShade = 200; // shade of _defaultBorderColor
-const _defaultRadius = 12.0;
+const _defaultBorderWidth = 0.5;
+const _focusBorderWidth = 0.5;
+const _defaultRadius = 24.0;
 
 // Sizing
-const _defaultHeight = 50.0;
-const _horizontalPadding = 16.0;
+const _defaultHeight = 56.0;
+const _horizontalPadding = 20.0;
 const _multilineVerticalPadding = 20.0;
-const _iconSize = 20.0;
-const _itemSpacing = 12.0;
+const _iconSize = 24.0;
+const _itemSpacing = 8.0;
 
 // Icon colors
-const _iconFocusedColor = AppColors.green;
-final _iconUnfocusedColor = AppColors.green.shade100;
-final _toggleIconUnfocusedColor = AppColors.gray.shade100;
+const _iconFocusedColor = AppColors.blue;
+final _iconUnfocusedColor = AppColors.black.shade400;
+final _toggleIconUnfocusedColor = AppColors.black.shade100;
 
 // Title
-const _titleBottomPadding = 8.0;
-final _titleStyle = AppTexts.txsb;
+const _titleBottomPadding = 4.0;
+final _titleStyle = AppTexts.tmdr;
 
 // Input text
-final _inputStyle = AppTexts.tsmr;
-final _hintColor = AppColors.gray[300]!;
+final _inputStyle = AppTexts.tsmm;
+final _hintStyle = AppTexts.tsmr;
+final _hintColor = AppColors.black[200]!;
 
 // Error text
 const _errorHorizontalPadding = 24.0;
@@ -143,7 +143,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       width: _focusBorderWidth,
                     )
                   : Border.all(
-                      color: _defaultBorderColor[_defaultBorderShade]!,
+                      color: _defaultBorderColor,
                       width: _defaultBorderWidth,
                     ),
             ),
@@ -156,10 +156,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     widget.leading!,
                     height: _iconSize,
                     width: _iconSize,
-                    colorFilter: ColorFilter.mode(
-                      isFocused ? _iconFocusedColor : _iconUnfocusedColor,
-                      BlendMode.srcIn,
-                    ),
+                    // colorFilter: ColorFilter.mode(
+                    //   isFocused ? _iconFocusedColor : _iconUnfocusedColor,
+                    //   BlendMode.srcIn,
+                    // ),
                   ),
                 Expanded(
                   child: TextField(
@@ -182,7 +182,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       isDense: true,
                       contentPadding: EdgeInsets.zero,
                       hintText: widget.hintText,
-                      hintStyle: _inputStyle.copyWith(color: _hintColor),
+                      hintStyle: _hintStyle.copyWith(color: _hintColor),
                     ),
                   ),
                 ),

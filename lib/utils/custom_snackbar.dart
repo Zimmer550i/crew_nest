@@ -28,8 +28,8 @@ void customSnackBar(String message, {bool isError = true, String? title}) {
     ),
 
     backgroundColor: isError
-        ? AppColors.red.withValues(alpha: 0.7)
-        : AppColors.green.withValues(alpha: 0.3),
+        ? AppColors.error.withValues(alpha: 0.7)
+        : AppColors.blue.withValues(alpha: 0.3),
 
     colorText: isError ? Colors.white : null,
   );

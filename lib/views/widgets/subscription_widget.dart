@@ -10,24 +10,24 @@ import 'package:flutter_svg/flutter_svg.dart';
 // ──────────────────────────────────────────────
 
 // Card colors
-final _cardBackgroundColor = AppColors.green.shade400;
-const _cardBorderColor = AppColors.green;
-const _dividerColor = AppColors.green;
+final _cardBackgroundColor = AppColors.blue.shade400;
+const _cardBorderColor = AppColors.blue;
+const _dividerColor = AppColors.blue;
 
 // Icon box
-const _iconBoxColor = AppColors.green;
+const _iconBoxColor = AppColors.blue;
 const _iconBoxSize = 50.0;
 const _iconBoxRadius = 16.0;
 
 // Title colors
-final _premiumTitleColor = AppColors.green[50]!;
-final _normalTitleColor = AppColors.green.shade200;
-final _premiumSubtitleColor = AppColors.green;
-final _normalSubtitleColor = AppColors.green[50]!;
+final _premiumTitleColor = AppColors.blue[50]!;
+final _normalTitleColor = AppColors.blue.shade200;
+final _premiumSubtitleColor = AppColors.blue;
+final _normalSubtitleColor = AppColors.blue[50]!;
 
 // Feature list colors
-final _featuresLabelColor = AppColors.green[50]!;
-final _featureTextColor = AppColors.green[100]!;
+final _featuresLabelColor = AppColors.blue[50]!;
+final _featureTextColor = AppColors.blue[100]!;
 
 // Sizing
 const _cardRadius = 16.0;

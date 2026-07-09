@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 // ──────────────────────────────────────────────
 
 // Colors
-final _dialogBackgroundColor = AppColors.green[50]!;
+final _dialogBackgroundColor = AppColors.blue[50]!;
 const _titleColor = Color(0xff4b4b4b);
-const _highlightColor = AppColors.green;
+const _highlightColor = AppColors.blue;
 
 // Sizing
 const _dialogRadius = 12.0;

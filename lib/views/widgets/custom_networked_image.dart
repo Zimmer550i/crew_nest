@@ -11,11 +11,11 @@ import 'package:shimmer/shimmer.dart';
 // ──────────────────────────────────────────────
 
 // Colors
-final _errorBackgroundColor = AppColors.gray.shade200;
-final _errorIconColor = AppColors.gray.shade400;
-final _errorTextColor = AppColors.gray.shade400;
-final _shimmerBaseColor = AppColors.green.shade300;
-final _shimmerHighlightColor = AppColors.green[25]!;
+final _errorBackgroundColor = AppColors.black.shade200;
+final _errorIconColor = AppColors.black.shade400;
+final _errorTextColor = AppColors.black.shade400;
+final _shimmerBaseColor = AppColors.blue.shade300;
+final _shimmerHighlightColor = AppColors.blue[25]!;
 const _shimmerChildColor = Colors.white;
 
 // Sizing

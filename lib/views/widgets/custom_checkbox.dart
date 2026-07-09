@@ -6,8 +6,8 @@ import 'package:crew_nest/utils/app_colors.dart';
 // ──────────────────────────────────────────────
 
 // Colors
-const _activeColor = AppColors.green;
-const _inactiveColor = AppColors.gray;
+const _activeColor = AppColors.blue;
+const _inactiveColor = AppColors.black;
 const _checkmarkColor = Colors.white;
 const _inactiveBackgroundColor = Colors.transparent;
 

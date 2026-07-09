@@ -8,18 +8,18 @@ import 'package:crew_nest/utils/app_texts.dart';
 // ──────────────────────────────────────────────
 
 // Primary button colors
-final _primaryColor = AppColors.green.shade500;
-final _primaryDisabledColor = AppColors.green.shade300;
-final _primaryTextColor = AppColors.green.shade900;
-final _primaryIconColor = AppColors.green[25]!;
-final _primaryLoaderColor = AppColors.green[50]!;
+final _primaryColor = AppColors.blue.shade500;
+final _primaryDisabledColor = AppColors.blue.shade300;
+final _primaryTextColor = Colors.white;
+final _primaryIconColor = Colors.white;
+final _primaryLoaderColor = Colors.white;
 
 // Secondary button colors
-final _secondaryColor = AppColors.green[50]!;
-const _secondaryBorderColor = AppColors.green;
-const _secondaryTextColor = AppColors.green;
-const _secondaryIconColor = AppColors.green;
-const _secondaryLoaderColor = AppColors.green;
+final _secondaryColor = AppColors.blue[50]!;
+const _secondaryBorderColor = AppColors.blue;
+const _secondaryTextColor = AppColors.blue;
+const _secondaryIconColor = AppColors.blue;
+const _secondaryLoaderColor = AppColors.blue;
 
 // Sizing defaults
 const _defaultHeight = 50.0;
@@ -36,7 +36,7 @@ const _loaderPadding = 8.0;
 const _animationDuration = Duration(milliseconds: 100);
 
 // Typography
-final _textStyle = AppTexts.tsmb;
+final _textStyle = AppTexts.tmdm;
 
 // ──────────────────────────────────────────────
 
@@ -94,7 +94,7 @@ class _CustomButtonState extends State<CustomButton> {
               : _primaryColor,
           borderRadius: BorderRadius.circular(widget.radius),
           border: widget.isSecondary
-              ? Border.all(color: _secondaryBorderColor)
+              ? Border.all(width: 0.5, color: _secondaryBorderColor)
               : null,
         ),
         child: widget.isLoading

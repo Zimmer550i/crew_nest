@@ -12,21 +12,17 @@ import 'package:crew_nest/utils/custom_svg.dart';
 // ──────────────────────────────────────────────
 
 // Colors
-final _progressColor = AppColors.green[400]!;
-final _errorBackgroundColor = AppColors.green[100]!;
+final _progressColor = AppColors.blue[400]!;
+final _errorBackgroundColor = AppColors.blue[100]!;
 const _errorIconColor = Colors.blue;
-final _placeholderBorderColor = AppColors.green[300]!;
-final _placeholderIconColor = AppColors.green[400]!;
-const _editButtonColor = AppColors.green;
+final _placeholderBorderColor = AppColors.blue[300]!;
+final _placeholderIconColor = AppColors.blue[400]!;
 
 // Sizing
 const _defaultSize = 100.0;
 const _avatarRadius = 100.0;
 const _placeholderPaddingScale = 0.17;
 const _progressStrokeWidth = 2.0;
-const _editButtonSize = 32.0;
-const _editButtonPadding = 8.0;
-const _editButtonOffset = -12.0;
 const _editIconSize = 16.0;
 
 // Icons
@@ -70,6 +66,7 @@ class ProfilePicture extends StatelessWidget {
       },
       child: Stack(
         clipBehavior: Clip.none,
+        alignment: Alignment.center,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(_avatarRadius),
@@ -128,19 +125,15 @@ class ProfilePicture extends StatelessWidget {
                   ),
           ),
           if (isEditable)
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: _editButtonOffset,
-              child: Center(
-                child: Container(
-                  height: _editButtonSize,
-                  width: _editButtonSize,
-                  decoration: BoxDecoration(
-                    color: _editButtonColor,
-                    shape: BoxShape.circle,
-                  ),
-                  padding: EdgeInsets.all(_editButtonPadding),
+            Positioned.fill(
+              child: Container(
+                height: _defaultSize,
+                width: _defaultSize,
+                decoration: BoxDecoration(
+                  color: Colors.black.withValues(alpha: 0.3),
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
                   child: CustomSvg(asset: _editIcon, size: _editIconSize),
                 ),
               ),
