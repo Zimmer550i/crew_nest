@@ -23,7 +23,7 @@ const _defaultSize = 100.0;
 const _avatarRadius = 100.0;
 const _placeholderPaddingScale = 0.17;
 const _progressStrokeWidth = 2.0;
-const _editIconSize = 16.0;
+const _editIconSize = 24.0;
 
 // Icons
 const _placeholderIcon = AppIcons.person;
@@ -127,8 +127,8 @@ class ProfilePicture extends StatelessWidget {
           if (isEditable)
             Positioned.fill(
               child: Container(
-                height: _defaultSize,
-                width: _defaultSize,
+                height: size,
+                width: size,
                 decoration: BoxDecoration(
                   color: Colors.black.withValues(alpha: 0.3),
                   shape: BoxShape.circle,

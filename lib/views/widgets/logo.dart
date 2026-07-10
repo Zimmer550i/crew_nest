@@ -17,6 +17,7 @@ class Logo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       spacing: 6,
+      mainAxisSize: .min,
       children: [
         Image.asset(
           "assets/images/logo${isWhite ? "_white" : ""}.png",

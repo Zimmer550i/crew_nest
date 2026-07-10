@@ -10,7 +10,7 @@ import 'package:crew_nest/utils/app_texts.dart';
 
 // Colors
 const _backgroundColor = Colors.white;
-final _focusBorderColor = AppColors.blue[300]!;
+final _focusBorderColor = AppColors.blue;
 final _defaultBorderColor = AppColors.blue[100]!;
 final _cursorColor = AppColors.blue.shade300;
 const _errorColor = AppColors.error;

@@ -8,7 +8,7 @@ class AppColors {
   static const Color warning = Color(0xFFF59E0B);
 
   // Blue
-  static const MaterialColor blue = MaterialColor(0xFF0D536B, {
+  static const MaterialColor blue = MaterialColor(0xFF0D3B66, {
     25: Color(0xFFF0F5FB),
     50: Color(0xFFE7EBF0),
     100: Color(0xFFB4C2D0),
@@ -23,7 +23,7 @@ class AppColors {
   });
 
   // Black
-  static const MaterialColor black = MaterialColor(0xFF4B5563, {
+  static const MaterialColor black = MaterialColor(0xFF000000, {
     25: Color(0xFFF6F6F6),
     50: Color(0xFFE6E6E6),
     100: Color(0xFFB0B0B0),

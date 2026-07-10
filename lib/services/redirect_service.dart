@@ -1,3 +1,6 @@
+import 'package:crew_nest/views/screens/auth/onboarding/welcome_screen.dart';
+import 'package:get/get.dart';
+
 class RedirectService {
   static const Duration splashDuration = Duration(seconds: 2);
 
@@ -15,12 +18,13 @@ class RedirectService {
       await Future.delayed(splashDuration - apiTime);
     }
 
-    // bool neverShownOnboarding = false;
+    bool neverShownOnboarding = true;
     // bool needAccountCreation = false;
     // bool needVerification = false;
 
-    // if (neverShownOnboarding) {
-    //   gotoOnboarding();
+    if (neverShownOnboarding) {
+      gotoOnboarding();
+    }
     // } else if (needVerification) {
     //   gotoVerification();
     // } else if (needAccountCreation) {
@@ -28,8 +32,6 @@ class RedirectService {
     // } else {
     //   gotoApp();
     // }
-
-    // Get.to(() => ChooseLanguage());
   }
 
   static void gotoApp() {
@@ -38,7 +40,9 @@ class RedirectService {
 
   static void gotoVerification() {}
 
-  static void gotoOnboarding() {}
+  static void gotoOnboarding() {
+    Get.to(() => WelcomeScreen());
+  }
 
   static void gotoAccountCreation() {}
 }

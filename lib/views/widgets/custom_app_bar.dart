@@ -25,9 +25,9 @@ const _backIcon = AppIcons.back;
 // ──────────────────────────────────────────────
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  final String? title;
   final bool hasLeading;
-  const CustomAppBar({super.key, required this.title, this.hasLeading = true});
+  const CustomAppBar({super.key, this.title, this.hasLeading = true});
 
   @override
   Size get preferredSize => Size(double.infinity, kToolbarHeight);
@@ -57,7 +57,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
             if (hasLeading) const SizedBox(width: _titleLeftPadding),
-            Text(title, style: _titleStyle),
+            Text(title ?? "", style: _titleStyle),
           ],
         ),
       ),
