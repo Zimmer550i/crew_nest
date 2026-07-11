@@ -115,7 +115,7 @@ class ProfilePicture extends StatelessWidget {
                     ),
                     child: Center(
                       child: SvgPicture.asset(
-                        _placeholderIcon,
+                        isEditable ? _editIcon : _placeholderIcon,
                         colorFilter: ColorFilter.mode(
                           _placeholderIconColor,
                           BlendMode.srcIn,
@@ -124,7 +124,7 @@ class ProfilePicture extends StatelessWidget {
                     ),
                   ),
           ),
-          if (isEditable)
+          if (isEditable && (image != null || imageFile != null))
             Positioned.fill(
               child: Container(
                 height: size,

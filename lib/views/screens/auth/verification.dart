@@ -7,7 +7,7 @@ import 'package:crew_nest/views/screens/auth/login.dart';
 import 'package:crew_nest/views/screens/auth/onboarding/welcome_screen.dart';
 import 'package:crew_nest/views/screens/auth/success_screen.dart';
 import 'package:crew_nest/views/screens/auth/verify_employment.dart';
-import 'package:crew_nest/views/screens/profile/edit_personal_information.dart';
+import 'package:crew_nest/views/screens/common/edit_personal_information.dart';
 import 'package:crew_nest/views/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

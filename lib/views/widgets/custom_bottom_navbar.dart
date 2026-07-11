@@ -25,7 +25,15 @@ final _labelStyle = AppTexts.tsmm;
 class CustomBottomNavbar extends StatelessWidget {
   final int index;
   final Function(int)? onChanged;
-  const CustomBottomNavbar({super.key, required this.index, this.onChanged});
+  final List<String> icons;
+  final List<String> titles;
+  const CustomBottomNavbar({
+    super.key,
+    required this.index,
+    this.onChanged,
+    required this.icons,
+    required this.titles,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +50,12 @@ class CustomBottomNavbar extends StatelessWidget {
         child: SafeArea(
           child: Row(
             children: [
-              item("Home", "home", 0),
-              item("Bookings", "booking", 1),
-              item("Saved", "heart", 2),
-              item("Profile", "profile", 3),
+              for (int i = 0; i < icons.length && i < titles.length; i++)
+                item(titles[i], icons[i], i),
+              // item("Home", "home", 0),
+              // item("Bookings", "booking", 1),
+              // item("Saved", "heart", 2),
+              // item("Profile", "profile", 3),
             ],
           ),
         ),

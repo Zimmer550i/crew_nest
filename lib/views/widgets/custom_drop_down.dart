@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:crew_nest/utils/app_icons.dart';
 import 'package:crew_nest/utils/app_texts.dart';
 import 'package:crew_nest/utils/custom_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
 // ──────────────────────────────────────────────
 // CUSTOMIZABLE VARIABLES — Matching CustomTextField style
@@ -23,6 +24,7 @@ const _defaultRadius = 24.0;
 const _defaultHeight = 56.0;
 const _horizontalPadding = 20.0;
 const _iconSize = 24.0;
+const _itemSpacing = 8.0;
 
 // Title
 const _titleBottomPadding = 4.0;
@@ -50,6 +52,7 @@ class CustomDropDown extends StatefulWidget {
   final int? initialPick;
   final String? hintText;
   final String? errorText;
+  final String? leading;
   final List<String> options;
   final double? height;
   final double? width;
@@ -66,6 +69,7 @@ class CustomDropDown extends StatefulWidget {
     this.initialPick,
     this.hintText,
     this.errorText,
+    this.leading,
     required this.options,
     this.onChanged,
     this.radius = _defaultRadius,
@@ -255,7 +259,14 @@ class _CustomDropDownState extends State<CustomDropDown> {
                       ),
               ),
               child: Row(
+                spacing: _itemSpacing,
                 children: [
+                  if (widget.leading != null)
+                    SvgPicture.asset(
+                      widget.leading!,
+                      height: _iconSize,
+                      width: _iconSize,
+                    ),
                   Expanded(
                     child: Text(
                       _currentVal ?? widget.hintText ?? "Select One",

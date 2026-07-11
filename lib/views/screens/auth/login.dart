@@ -2,10 +2,12 @@ import 'package:crew_nest/utils/app_colors.dart';
 import 'package:crew_nest/utils/app_texts.dart';
 import 'package:crew_nest/utils/custom_svg.dart';
 import 'package:crew_nest/views/screens/auth/forgot_password.dart';
-import 'package:crew_nest/views/screens/auth/verification.dart';
+import 'package:crew_nest/views/screens/landlord/landlord_app.dart';
+import 'package:crew_nest/views/screens/user/user_app.dart';
 import 'package:crew_nest/views/widgets/custom_button.dart';
 import 'package:crew_nest/views/widgets/custom_text_field.dart';
 import 'package:crew_nest/views/widgets/logo.dart';
+import 'package:crew_nest/views/widgets/overlay_confirmation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -55,7 +57,22 @@ class _LoginState extends State<Login> {
   }
 
   void onSubmit() async {
-    Get.to(() => Verification(email: _emailController.text.trim()));
+    showDialog(
+      context: context,
+      builder: (ctx) {
+        return OverlayConfirmation(
+          title: "Who are you?",
+          buttonTextLeft: "Renter",
+          buttonCallBackLeft: () {
+            Get.to(() => UserApp());
+          },
+          buttonTextRight: "Landlord",
+          buttonCallBackRight: () {
+            Get.to(() => LandlordApp());
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -150,17 +167,12 @@ class _LoginState extends State<Login> {
                         },
                         child: Text(
                           "Forgot Password?",
-                          style: AppTexts.tsmm.copyWith(
-                            color: AppColors.error,
-                          ),
+                          style: AppTexts.tsmm.copyWith(color: AppColors.error),
                         ),
                       ),
                     ),
                     Spacer(),
-                    CustomButton(
-                      onTap: onSubmit,
-                      text: "Log In",
-                    ),
+                    CustomButton(onTap: onSubmit, text: "Log In"),
                     Spacer(),
                   ],
                 ),
