@@ -1,7 +1,12 @@
+import 'package:crew_nest/utils/app_colors.dart';
+import 'package:crew_nest/utils/custom_svg.dart';
+import 'package:crew_nest/views/screens/common/inbox.dart';
+import 'package:crew_nest/views/screens/common/notifications.dart';
 import 'package:crew_nest/views/screens/user/profile/user_profile.dart';
 import 'package:crew_nest/views/widgets/custom_app_bar.dart';
 import 'package:crew_nest/views/widgets/custom_bottom_navbar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class UserApp extends StatefulWidget {
   const UserApp({super.key});
@@ -25,7 +30,18 @@ class _UserAppState extends State<UserApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: titles[index], hasLeading: false),
+      appBar: CustomAppBar(
+        title: titles[index],
+        hasLeading: false,
+        actions: [
+          actionButton("bell", () {
+            Get.to(() => Notifications());
+          }),
+          actionButton("message", () {
+            Get.to(() => Inbox());
+          }),
+        ],
+      ),
       body: pages[index],
       bottomNavigationBar: CustomBottomNavbar(
         index: index,
@@ -36,6 +52,35 @@ class _UserAppState extends State<UserApp> {
         },
         icons: icons,
         titles: tabs,
+      ),
+    );
+  }
+
+  Widget actionButton(String iconName, void Function() onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 32,
+        width: 32,
+        decoration: BoxDecoration(shape: .circle, color: Colors.white),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            CustomSvg(asset: "assets/icons/$iconName.svg"),
+            Positioned(
+              top: 5,
+              right: 5,
+              child: Container(
+                height: 8,
+                width: 8,
+                decoration: BoxDecoration(
+                  shape: .circle,
+                  color: AppColors.error,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -65,19 +65,49 @@ class Formatter {
     return "${date.day} ${monthNameShort(date.month)} ${date.year}";
   }
 
-  /// Returns relative date string: "Today", "Yesterday", "2 days ago", etc.
-  static String relativeDate(DateTime date) {
+  /// Returns relative time strings such as:
+  /// "Just now", "1m ago", "2h ago", "Yesterday", "3 days ago", etc.
+  static String relativeDateTime(DateTime date) {
     final now = DateTime.now();
+    final difference = now.difference(date);
+
+    // Future date handling
+    if (difference.isNegative) {
+      return "Just now";
+    }
+
+    if (difference.inSeconds < 60) {
+      return "Just now";
+    }
+
+    if (difference.inMinutes < 60) {
+      return "${difference.inMinutes}m ago";
+    }
+
+    if (difference.inHours < 24) {
+      return "${difference.inHours}h ago";
+    }
+
     final today = DateTime(now.year, now.month, now.day);
     final dateOnly = DateTime(date.year, date.month, date.day);
-    final diff = today.difference(dateOnly).inDays;
+    final days = today.difference(dateOnly).inDays;
 
-    if (diff == 0) return "Today";
-    if (diff == 1) return "Yesterday";
-    if (diff < 7) return "$diff days ago";
-    if (diff < 30) return "${(diff / 7).floor()} weeks ago";
-    if (diff < 365) return "${(diff / 30).floor()} months ago";
-    return "${(diff / 365).floor()} years ago";
+    if (days == 0) return "Today";
+    if (days == 1) return "Yesterday";
+    if (days < 7) return "$days days ago";
+
+    if (days < 30) {
+      final weeks = (days / 7).floor();
+      return "${weeks}w ago";
+    }
+
+    if (days < 365) {
+      final months = (days / 30).floor();
+      return "${months}mo ago";
+    }
+
+    final years = (days / 365).floor();
+    return "${years}y ago";
   }
 
   // ──────────────────────────────────────────
@@ -215,13 +245,33 @@ class Formatter {
   // ──────────────────────────────────────────
 
   static const _months = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
   static const _monthsShort = [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
 
   /// Returns full month name (1-indexed): 1 → "January".

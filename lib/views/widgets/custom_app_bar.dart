@@ -11,7 +11,7 @@ import 'package:crew_nest/utils/custom_svg.dart';
 
 // Sizing
 const _appBarHeight = 44.0;
-const _leadingStartPadding = 20.0;
+const _padding = 20.0;
 const _leadingSize = 32.0;
 const _leadingRadius = 8.0;
 const _titleLeftPadding = 20.0;
@@ -27,7 +27,13 @@ const _backIcon = AppIcons.back;
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final bool hasLeading;
-  const CustomAppBar({super.key, this.title, this.hasLeading = true});
+  final List<Widget> actions;
+  const CustomAppBar({
+    super.key,
+    this.title,
+    this.hasLeading = true,
+    this.actions = const [],
+  });
 
   @override
   Size get preferredSize => Size(double.infinity, kToolbarHeight);
@@ -43,7 +49,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         height: _appBarHeight,
         child: Row(
           children: [
-            SizedBox(width: _leadingStartPadding),
+            SizedBox(width: _padding),
             if (hasLeading)
               InkWell(
                 onTap: () => Get.back(),
@@ -57,7 +63,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
             if (hasLeading) const SizedBox(width: _titleLeftPadding),
-            Text(title ?? "", style: _titleStyle),
+            Expanded(child: Text(title ?? "", style: _titleStyle)),
+            for (var i in actions)
+              Padding(padding: const EdgeInsets.only(left: 12), child: i),
+            SizedBox(width: _padding),
           ],
         ),
       ),

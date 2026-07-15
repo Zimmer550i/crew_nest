@@ -1,6 +1,6 @@
 import 'dart:io';
-
 import 'package:crew_nest/views/widgets/custom_app_bar.dart';
+import 'package:crew_nest/views/widgets/custom_button.dart';
 import 'package:crew_nest/views/widgets/custom_drop_down.dart';
 import 'package:crew_nest/views/widgets/custom_text_field.dart';
 import 'package:crew_nest/views/widgets/profile_picture.dart';
@@ -55,6 +55,7 @@ class _EditPersonalInformationState extends State<EditPersonalInformation> {
                   });
                 },
               ),
+              const SizedBox(height: 20,),
               CustomTextField(
                 title: "Full Name",
                 leading: "assets/icons/profile.svg",
@@ -95,6 +96,8 @@ class _EditPersonalInformationState extends State<EditPersonalInformation> {
                   });
                 },
               ),
+              const SizedBox(height: 50,),
+              CustomButton(text: "Save Changes")
             ],
           ),
         ),
