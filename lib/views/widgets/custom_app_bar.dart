@@ -27,11 +27,15 @@ const _backIcon = AppIcons.back;
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final bool hasLeading;
+  final bool showScrollTint;
+  final bool isTransparent;
   final List<Widget> actions;
   const CustomAppBar({
     super.key,
     this.title,
     this.hasLeading = true,
+    this.showScrollTint = true,
+    this.isTransparent = false,
     this.actions = const [],
   });
 
@@ -42,8 +46,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: AppColors.bg,
-      surfaceTintColor: AppColors.blue,
+      backgroundColor: isTransparent ? Colors.transparent : AppColors.bg,
+      surfaceTintColor: showScrollTint ? AppColors.blue : Colors.transparent,
       titleSpacing: 0,
       title: SizedBox(
         height: _appBarHeight,

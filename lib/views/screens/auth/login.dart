@@ -64,11 +64,11 @@ class _LoginState extends State<Login> {
           title: "Who are you?",
           buttonTextLeft: "Renter",
           buttonCallBackLeft: () {
-            Get.to(() => UserApp());
+            Get.to(() => UserApp(), routeName: "/app");
           },
           buttonTextRight: "Landlord",
           buttonCallBackRight: () {
-            Get.to(() => LandlordApp());
+            Get.to(() => LandlordApp(), routeName: "/app");
           },
         );
       },
