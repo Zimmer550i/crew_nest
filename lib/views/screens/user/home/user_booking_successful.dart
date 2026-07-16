@@ -34,133 +34,125 @@ class UserBookingSuccessful extends StatelessWidget {
                 style: AppTexts.tmdr.copyWith(color: AppColors.black.shade300),
               ),
               const SizedBox(height: 20),
-              Container(
-                padding: .all(20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: .circular(24),
-                ),
-                child: Column(
-                  spacing: 16,
-                  children: [
-                    Row(
-                      mainAxisAlignment: .spaceBetween,
-                      children: [
-                        Text(
-                          "Booking ID: #20245",
-                          style: AppTexts.tlgm.copyWith(
-                            color: AppColors.blue,
-                            height: 1,
-                          ),
-                        ),
-                        Text(
-                          "Pending",
-                          style: AppTexts.tmdm.copyWith(
-                            color: AppColors.warning,
-                            height: 1,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      spacing: 4,
-                      children: [
-                        Row(
-                          mainAxisAlignment: .spaceBetween,
-                          children: [
-                            Text(
-                              "Property:",
-                              style: AppTexts.tmdr.copyWith(
-                                color: AppColors.black.shade300,
-                              ),
-                            ),
-                            Text("The Aviator Suite", style: AppTexts.tmdm),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: .spaceBetween,
-                          children: [
-                            Text(
-                              "Check In:",
-                              style: AppTexts.tmdr.copyWith(
-                                color: AppColors.black.shade300,
-                              ),
-                            ),
-                            Text("October 15, 2026", style: AppTexts.tmdm),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: .spaceBetween,
-                          children: [
-                            Text(
-                              "Check Out:",
-                              style: AppTexts.tmdr.copyWith(
-                                color: AppColors.black.shade300,
-                              ),
-                            ),
-                            Text("October 18, 2026", style: AppTexts.tmdm),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Divider(height: 0),
-                    Row(
-                      mainAxisAlignment: .spaceBetween,
-                      children: [
-                        Text(
-                          "Total Paid",
-                          style: AppTexts.txlm.copyWith(
-                            height: 1,
-                            color: AppColors.blue,
-                          ),
-                        ),
-                        Text(
-                          "\$310",
-                          style: AppTexts.txlm.copyWith(
-                            height: 1,
-                            color: AppColors.blue,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              _buildBookingDetailsCard(),
               Spacer(),
-              Row(
-                spacing: 20,
-                children: [
-                  Expanded(
-                    child: CustomButton(
-                      onTap: () {
-                        Get.until((route) {
-                          return route.settings.name == "/app";
-                        });
-                      },
-                      text: "Go Back",
-                      isSecondary: true,
-                      padding: 0,
-                    ),
-                  ),
-                  Expanded(
-                    child: CustomButton(
-                      onTap: () {
-                        Get.until((route) {
-                          return route.settings.name == "/app";
-                        });
-                        Get.to(() => Chat());
-                      },
-                      text: "Message Host",
-                      padding: 0,
-                    ),
-                  ),
-                ],
-              ),
+              _buildActionButtons(),
               const SizedBox(height: 20),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  // ── Extracted builders ─────────────────────────────────────────────────
+
+  Widget _buildBookingDetailsCard() {
+    return Container(
+      padding: .all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: .circular(24),
+      ),
+      child: Column(
+        spacing: 16,
+        children: [
+          Row(
+            mainAxisAlignment: .spaceBetween,
+            children: [
+              Text(
+                "Booking ID: #20245",
+                style: AppTexts.tlgm.copyWith(
+                  color: AppColors.blue,
+                  height: 1,
+                ),
+              ),
+              Text(
+                "Pending",
+                style: AppTexts.tmdm.copyWith(
+                  color: AppColors.warning,
+                  height: 1,
+                ),
+              ),
+            ],
+          ),
+          Column(
+            spacing: 4,
+            children: [
+              _buildDetailRow("Property:", "The Aviator Suite"),
+              _buildDetailRow("Check In:", "October 15, 2026"),
+              _buildDetailRow("Check Out:", "October 18, 2026"),
+            ],
+          ),
+          Divider(height: 0),
+          Row(
+            mainAxisAlignment: .spaceBetween,
+            children: [
+              Text(
+                "Total Paid",
+                style: AppTexts.txlm.copyWith(
+                  height: 1,
+                  color: AppColors.blue,
+                ),
+              ),
+              Text(
+                "\$310",
+                style: AppTexts.txlm.copyWith(
+                  height: 1,
+                  color: AppColors.blue,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDetailRow(String label, String value) {
+    return Row(
+      mainAxisAlignment: .spaceBetween,
+      children: [
+        Text(
+          label,
+          style: AppTexts.tmdr.copyWith(
+            color: AppColors.black.shade300,
+          ),
+        ),
+        Text(value, style: AppTexts.tmdm),
+      ],
+    );
+  }
+
+  Widget _buildActionButtons() {
+    return Row(
+      spacing: 20,
+      children: [
+        Expanded(
+          child: CustomButton(
+            onTap: () {
+              Get.until((route) {
+                return route.settings.name == "/app";
+              });
+            },
+            text: "Go Back",
+            isSecondary: true,
+            padding: 0,
+          ),
+        ),
+        Expanded(
+          child: CustomButton(
+            onTap: () {
+              Get.until((route) {
+                return route.settings.name == "/app";
+              });
+              Get.to(() => Chat());
+            },
+            text: "Message Host",
+            padding: 0,
+          ),
+        ),
+      ],
     );
   }
 }

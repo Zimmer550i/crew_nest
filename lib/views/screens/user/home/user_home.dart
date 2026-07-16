@@ -15,7 +15,15 @@ class UserHome extends StatefulWidget {
 }
 
 class _UserHomeState extends State<UserHome> {
-  final _focusNode = FocusNode();
+  final _searchFocusNode = FocusNode();
+  final _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchFocusNode.dispose();
+    _searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +46,10 @@ class _UserHomeState extends State<UserHome> {
                   CustomSvg(asset: "assets/icons/search.svg"),
                   Expanded(
                     child: TextField(
-                      focusNode: _focusNode,
+                      focusNode: _searchFocusNode,
+                      controller: _searchController,
                       onTapOutside: (event) {
-                        _focusNode.unfocus();
+                        _searchFocusNode.unfocus();
                       },
                       decoration: InputDecoration(
                         border: .none,
