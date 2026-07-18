@@ -5,10 +5,14 @@ import 'package:flutter/material.dart';
 class InformationContainer extends StatelessWidget {
   final String title;
   final String value;
+  final String? highlight;
+  final Color highlightColor;
   const InformationContainer({
     super.key,
     required this.title,
     required this.value,
+    this.highlight,
+    this.highlightColor = AppColors.blue,
   });
 
   @override
@@ -24,7 +28,17 @@ class InformationContainer extends StatelessWidget {
           spacing: 4,
           crossAxisAlignment: .start,
           children: [
-            Text(value, style: AppTexts.dxsm),
+            Row(
+              crossAxisAlignment: .start,
+              children: [
+                Expanded(child: Text(value, style: AppTexts.dxsm)),
+                if (highlight != null)
+                  Text(
+                    highlight!,
+                    style: AppTexts.tsmm.copyWith(color: highlightColor),
+                  ),
+              ],
+            ),
             Text(
               title,
               style: AppTexts.tmdr.copyWith(color: AppColors.black.shade300),

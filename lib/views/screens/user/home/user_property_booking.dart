@@ -8,14 +8,14 @@ import 'package:crew_nest/views/widgets/custom_calender.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class UserBooking extends StatefulWidget {
-  const UserBooking({super.key});
+class UserPropertyBooking extends StatefulWidget {
+  const UserPropertyBooking({super.key});
 
   @override
-  State<UserBooking> createState() => _UserBookingState();
+  State<UserPropertyBooking> createState() => _UserPropertyBookingState();
 }
 
-class _UserBookingState extends State<UserBooking> {
+class _UserPropertyBookingState extends State<UserPropertyBooking> {
   Set<DateTime> _selectedDates = {};
 
   void _onSubmit() async {
@@ -80,9 +80,7 @@ class _UserBookingState extends State<UserBooking> {
             ),
             Text(
               "Los Angeles • 10 mins from LAX",
-              style: AppTexts.tmdr.copyWith(
-                color: AppColors.black.shade300,
-              ),
+              style: AppTexts.tmdr.copyWith(color: AppColors.black.shade300),
             ),
           ],
         ),
