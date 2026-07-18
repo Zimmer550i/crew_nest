@@ -1,6 +1,8 @@
 import 'package:crew_nest/utils/app_colors.dart';
 import 'package:crew_nest/utils/app_texts.dart';
+import 'package:crew_nest/views/screens/user/booking/user_give_review.dart';
 import 'package:crew_nest/views/screens/user/home/user_booking_successful.dart';
+import 'package:crew_nest/views/screens/user/widgets/user_booking_status.dart';
 import 'package:crew_nest/views/screens/user/widgets/user_property_card.dart';
 import 'package:crew_nest/views/widgets/custom_app_bar.dart';
 import 'package:crew_nest/views/widgets/custom_button.dart';
@@ -17,7 +19,10 @@ class UserBookingSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Booking Summary"),
+      appBar: CustomAppBar(
+        title: "Booking Summary",
+        actions: [UserBookingStatus()],
+      ),
       body: SingleChildScrollView(
         padding: .symmetric(horizontal: 20),
         child: SafeArea(
@@ -63,10 +68,7 @@ class UserBookingSummary extends StatelessWidget {
                   "October ${18 + i}",
                   style: AppTexts.tmdr.copyWith(height: 1),
                 ),
-                Text(
-                  "\$100",
-                  style: AppTexts.tmdm.copyWith(height: 1),
-                ),
+                Text("\$100", style: AppTexts.tmdm.copyWith(height: 1)),
               ],
             ),
         ],
@@ -83,9 +85,7 @@ class UserBookingSummary extends StatelessWidget {
           children: [
             Text(
               "\$100 X 3 nights",
-              style: AppTexts.tmdr.copyWith(
-                color: AppColors.black.shade300,
-              ),
+              style: AppTexts.tmdr.copyWith(color: AppColors.black.shade300),
             ),
             Text("\$300", style: AppTexts.txlm),
           ],
@@ -95,9 +95,7 @@ class UserBookingSummary extends StatelessWidget {
           children: [
             Text(
               "Platform fee",
-              style: AppTexts.tmdr.copyWith(
-                color: AppColors.black.shade300,
-              ),
+              style: AppTexts.tmdr.copyWith(color: AppColors.black.shade300),
             ),
             Text("\$10", style: AppTexts.txlm),
           ],
@@ -118,10 +116,16 @@ class UserBookingSummary extends StatelessWidget {
     return Row(
       spacing: 20,
       children: [
+        // Expanded(
+        //   child: CustomButton(text: "Cancel", isSecondary: true, padding: 0),
+        // ),
         Expanded(
           child: CustomButton(
-            text: "Cancel",
-            isSecondary: true,
+            onTap: () {
+              Get.to(() => UserGiveReview());
+            },
+            text: "Reveiw",
+            isSecondary: false,
             padding: 0,
           ),
         ),

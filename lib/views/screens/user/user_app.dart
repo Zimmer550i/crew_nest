@@ -2,6 +2,7 @@ import 'package:crew_nest/utils/app_colors.dart';
 import 'package:crew_nest/utils/custom_svg.dart';
 import 'package:crew_nest/views/screens/common/inbox.dart';
 import 'package:crew_nest/views/screens/common/notifications.dart';
+import 'package:crew_nest/views/screens/user/booking/user_booking.dart';
 import 'package:crew_nest/views/screens/user/home/user_home.dart';
 import 'package:crew_nest/views/screens/user/profile/user_profile.dart';
 import 'package:crew_nest/views/screens/user/saved/user_saved.dart';
@@ -22,7 +23,7 @@ class _UserAppState extends State<UserApp> {
   List<String> icons = ["home", "booking", "heart", "profile"];
   List<String> tabs = ["Home", "Booking", "Saved", "Profile"];
   List<String> titles = ["CrewNest", "My Bookings", "Saved Items", "Profile"];
-  List<Widget> pages = [UserHome(), FlutterLogo(), UserSaved(), UserProfile()];
+  List<Widget> pages = [UserHome(), UserBooking(), UserSaved(), UserProfile()];
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class _UserAppState extends State<UserApp> {
       appBar: CustomAppBar(
         title: titles[index],
         hasLeading: false,
-        showScrollTint: index != 0,
+        showScrollTint: ![0, 1].contains(index),
         actions: [
           actionButton("bell", () {
             Get.to(() => Notifications());
