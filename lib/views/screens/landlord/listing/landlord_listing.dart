@@ -1,7 +1,9 @@
 import 'package:crew_nest/utils/custom_list_handler.dart';
+import 'package:crew_nest/views/screens/landlord/listing/add%20listing/landlord_add_listing.dart';
 import 'package:crew_nest/views/screens/landlord/widgets/landlord_listing_card.dart';
 import 'package:crew_nest/views/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LandlordListing extends StatelessWidget {
   const LandlordListing({super.key});
@@ -13,14 +15,22 @@ class LandlordListing extends StatelessWidget {
         children: [
           Positioned.fill(
             child: CustomListHandler(
-              children: [for (int i = 0; i < 5; i++) LandlordListingCard(), const SizedBox(height: 20,),],
+              children: [
+                for (int i = 0; i < 5; i++) LandlordListingCard(),
+                const SizedBox(height: 20),
+              ],
             ),
           ),
           Positioned(
             left: 20,
             right: 20,
             bottom: 20,
-            child: CustomButton(onTap: () {}, text: "Add New Listing"),
+            child: CustomButton(
+              onTap: () {
+                Get.to(() => LandlordAddListing());
+              },
+              text: "Add New Listing",
+            ),
           ),
           // Positioned(
           //   left: 20,

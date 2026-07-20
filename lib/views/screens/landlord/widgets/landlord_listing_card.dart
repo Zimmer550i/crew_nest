@@ -1,6 +1,7 @@
 import 'package:crew_nest/utils/app_colors.dart';
 import 'package:crew_nest/utils/app_texts.dart';
 import 'package:crew_nest/utils/custom_svg.dart';
+import 'package:crew_nest/views/screens/landlord/listing/landlord_listing_details.dart';
 import 'package:crew_nest/views/widgets/overlay_confirmation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,7 +13,7 @@ class LandlordListingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Get.to(() => UserPropertyDetails());
+        Get.to(() => LandlordListingDetails());
       },
       child: Container(
         decoration: BoxDecoration(
@@ -156,7 +157,7 @@ class LandlordListingCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 4,),
+                  // const SizedBox(height: 4,),
                   Row(
                     spacing: 4,
                     children: [

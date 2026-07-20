@@ -3,6 +3,7 @@ import 'package:crew_nest/utils/custom_svg.dart';
 import 'package:crew_nest/views/screens/common/inbox.dart';
 import 'package:crew_nest/views/screens/common/notifications.dart';
 import 'package:crew_nest/views/screens/landlord/booking/landlord_booking.dart';
+import 'package:crew_nest/views/screens/landlord/earning/landlord_earning.dart';
 import 'package:crew_nest/views/screens/landlord/home/landlord_home.dart';
 import 'package:crew_nest/views/screens/landlord/listing/landlord_listing.dart';
 import 'package:crew_nest/views/screens/landlord/profile/landlord_profile.dart';
@@ -33,7 +34,7 @@ class _LandlordAppState extends State<LandlordApp> {
     LandlordHome(),
     LandlordBooking(),
     LandlordListing(),
-    FlutterLogo(),
+    LandlordEarning(),
     LandlordProfile(),
   ];
 
@@ -43,7 +44,7 @@ class _LandlordAppState extends State<LandlordApp> {
       appBar: CustomAppBar(
         hasLeading: false,
         title: titles[index],
-        showScrollTint: ![0, 1].contains(index),
+        showScrollTint: ![0, 1, 3].contains(index),
         actions: [
           actionButton("bell", () {
             Get.to(() => Notifications());
