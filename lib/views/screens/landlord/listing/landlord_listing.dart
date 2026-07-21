@@ -27,7 +27,7 @@ class LandlordListing extends StatelessWidget {
             bottom: 20,
             child: CustomButton(
               onTap: () {
-                Get.to(() => LandlordAddListing());
+                Get.to(() => LandlordAddListing(key: addListingKey));
               },
               text: "Add New Listing",
             ),

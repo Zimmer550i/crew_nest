@@ -1,17 +1,25 @@
+import 'dart:io';
+
 import 'package:crew_nest/utils/app_colors.dart';
 import 'package:crew_nest/utils/app_texts.dart';
+import 'package:crew_nest/views/screens/landlord/listing/add%20listing/add_listing_details.dart';
+import 'package:crew_nest/views/screens/landlord/listing/add%20listing/add_listing_informations.dart';
+import 'package:crew_nest/views/screens/landlord/listing/add%20listing/add_listing_photos.dart';
+import 'package:crew_nest/views/screens/landlord/listing/add%20listing/add_listing_price.dart';
 import 'package:crew_nest/views/widgets/custom_app_bar.dart';
 import 'package:crew_nest/views/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+
+GlobalKey<LandlordAddListingState> addListingKey = GlobalKey();
 
 class LandlordAddListing extends StatefulWidget {
   const LandlordAddListing({super.key});
 
   @override
-  State<LandlordAddListing> createState() => _LandlordAddListingState();
+  State<LandlordAddListing> createState() => LandlordAddListingState();
 }
 
-class _LandlordAddListingState extends State<LandlordAddListing> {
+class LandlordAddListingState extends State<LandlordAddListing> {
   int index = 0;
   List<String> tabs = [
     "Informations",
@@ -20,11 +28,27 @@ class _LandlordAddListingState extends State<LandlordAddListing> {
     "Pricing & Availability",
   ];
   List<Widget> screens = [
-    FlutterLogo(size: 200),
-    FlutterLogo(size: 300),
-    FlutterLogo(size: 400),
-    FlutterLogo(size: 500),
+    AddListingInformations(),
+    AddListingPhotos(),
+    AddListingDetails(),
+    AddListingPrice(),
   ];
+
+  final titleCtrl = TextEditingController();
+  final locationCtrl = TextEditingController();
+  final airportCtrl = TextEditingController();
+  final rulesCtrl = TextEditingController();
+
+  final List<File> photos = [];
+  final int maxPhotoCount = 6;
+
+  final descriptionCtrl = TextEditingController();
+  final bedsCtrl = TextEditingController();
+  final guestsCtrl = TextEditingController();
+  final List<int> amenities = [];
+
+  bool isLongTerm = false;
+  final priceCtrl = TextEditingController();
 
   void onSubmit() {}
 

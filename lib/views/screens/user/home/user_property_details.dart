@@ -26,6 +26,15 @@ class _UserPropertyDetailsState extends State<UserPropertyDetails> {
   final _houseRulesController = ExpansibleController();
   final _availabilityController = ExpansibleController();
 
+  List<String> amenityIcons = ["wifi", "gym", "coffee", "blackout", "shuttle"];
+  List<String> amenityTitles = [
+    "Giga-WiFi",
+    "24/7 Gym",
+    "Nespresso",
+    "Blackout",
+    "Shuttle",
+  ];
+
   void onSubmit() async {
     Get.to(() => UserPropertyBooking());
   }
@@ -303,37 +312,21 @@ class _UserPropertyDetailsState extends State<UserPropertyDetails> {
                                     "Premium Amenities",
                                     style: AppTexts.tmdm,
                                   ),
-                                  Wrap(
-                                    alignment: .spaceBetween,
-                                    crossAxisAlignment: .start,
-                                    spacing: 4,
-                                    runSpacing: 12,
-                                    children: [
-                                      for (int i = 0; i < 5; i++)
-                                        Container(
-                                          padding: .symmetric(
-                                            horizontal: 20,
-                                            vertical: 8,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: .circular(16),
-                                          ),
-                                          child: Column(
-                                            spacing: 4,
-                                            mainAxisSize: .min,
-                                            children: [
-                                              CustomSvg(
-                                                asset: "assets/icons/wifi.svg",
-                                                size: 32,
-                                              ),
-                                              Text(
-                                                "Giga-Wifi",
-                                                style: AppTexts.tsmr,
-                                              ),
-                                            ],
-                                          ),
+                                  GridView(
+                                    shrinkWrap: true,
+                                    physics: NeverScrollableScrollPhysics(),
+                                    padding: .zero,
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 3,
+                                          childAspectRatio: 1.5,
+                                          mainAxisSpacing: 12,
+                                          crossAxisSpacing: 12,
                                         ),
+                                    children: [
+                                      for (int i = 0; i < 5; i++) amenity(i),
+                                      for (int i = 0; i < 30 % 5; i++)
+                                        Container(),
                                     ],
                                   ),
                                 ],
@@ -514,6 +507,31 @@ class _UserPropertyDetailsState extends State<UserPropertyDetails> {
         return child;
       },
       controller: controller,
+    );
+  }
+
+  Widget amenity(int pos) {
+    return Container(
+      // padding: .symmetric(horizontal: 20, vertical: 8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: .circular(16),
+        border: Border.all(width: 0.5, color: AppColors.black.shade50),
+      ),
+      child: Column(
+        // spacing: 4,
+        mainAxisSize: .min,
+        mainAxisAlignment: .center,
+        children: [
+          CustomSvg(
+            asset: "assets/icons/${amenityIcons.elementAt(pos)}.svg",
+            size: 32,
+          ),
+          FittedBox(
+            child: Text(amenityTitles.elementAt(pos), style: AppTexts.tsmr),
+          ),
+        ],
+      ),
     );
   }
 }
